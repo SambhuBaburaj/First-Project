@@ -4,9 +4,6 @@ const bcrypt = require('bcrypt');
 // const { body,check, validationResult } = require('express-validator');
 
 
-
-
-
 module.exports = {
     doSignup: (userData)=>{
         return new Promise(async(resolve,reject)=>{

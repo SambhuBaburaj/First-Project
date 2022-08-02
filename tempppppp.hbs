@@ -1,0 +1,130 @@
+<body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Body main wrapper start -->
+    <div class="wrapper login">
+
+
+
+
+        <!--breadcumb area start -->
+        <div class="breadcumb-area overlay pos-rltv">
+            <div class="bread-main">
+                <div class="bred-hading text-center">
+                    <h5>Login / Register</h5>
+                </div>
+                <ol class="breadcrumb">
+                    <li class="home"><a title="Go to Home Page" href="index.html">Home</a></li>
+                    <li class="active">Login</li>
+                </ol>
+            </div>
+        </div>
+        <!--breadcumb area end -->
+
+        <!-- Account Area Start -->
+        <div class="account-area ptb-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                        <form action="/user/login" method="post" class="login-side">
+                            <div class="login-reg">
+
+                                
+                               <h3>Login</h3>
+                                <div class="input-box mb-20">
+                                    <label class="control-label">E-Mail</label>
+                                    <input type="email" placeholder="E-Mail" value="" name="email" class="info">
+                                </div>
+                                <div class="input-box">
+                                    <label class="control-label">Password</label>
+                                    <input type="password" placeholder="Password" value="" name="password" class="info">
+                                </div>
+                            </div>
+                            <div class="frm-action">
+                                <div class="input-box tci-box">
+                                    {{!-- <a href="#" class="btn-def btn2">Login</a> --}}
+                                    <button type="submit" class="btn btn-primary">Login</button>
+                                </div>
+                                <span>
+                                    <input class="remr" type="checkbox"> Remember me
+                                </span>
+                                <a href="#" class="forgotten forg">Forgotten Password</a>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12 lr2">
+                        <form action="/user/register" method="post">
+                            <div class="login-reg">
+                                <h3>Register</h3>
+                                <div class="input-box ">
+                                    <label class="control-label">Full name</label>
+                                    {{!-- <input type="text" class="info" placeholder="Name" value="" name="fullName" id="name" onchange="validatenum()"> --}}
+                                    {{!-- <label id="valName" style="color: red; visibility: hidden; " >hi</label> --}}
+                                    
+                                </div>
+                                <div class="input-box mb-20">
+                                    <label class="control-label">E-Mail</label>
+                                    <input type="email" class="info" placeholder="E-Mail" value="" name="email">
+                                </div>
+                                <div class="input-box mb-20">
+                                    <label class="control-label">Phone number</label>
+                                    <input type="text" class="info" placeholder="Phone number" value="" name="mobile">
+                                </div>
+                                <div class="input-box">
+                                    <label class="control-label">Password</label>
+                                    <input type="password" class="info" placeholder="Password" value="" name="password">
+                                </div>
+                                <div class="input-box">
+                                    <label class="control-label">Re-enter the password</label>
+                                    <input type="password" class="info" placeholder="Password" value="">
+                                </div>
+                            </div>
+                            <div class="frm-action">
+                                <div class="input-box tci-box">
+                                    {{!-- <a href="#" type="submit" class="btn-def btn2">Register</a> --}}
+                                    <button type="submit" class="btn btn-primary">Register</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Account Area End -->
+
+
+          {{!-- <script>
+            function validatenum(){
+    
+    var text=document.getElementById("name").value;
+    console.log(text);
+    var regx=/a/;
+    if(regx.test(text))
+    {
+       
+        document.getElementById("valName").innerHTML="Valid";
+        document.getElementById("valName").style.visibility="visible";
+        document.getElementById("valName").style.color="green";
+    }
+    else{
+        
+        document.getElementById("valName").innerHTML="In-Valid Entry";
+        document.getElementById("valName").style.visibility="visible";
+        document.getElementById("valName").style.color="red";
+
+    }
+
+}
+
+        </script>   --}}
+
+
+
+    </div>
+    <!-- Body main wrapper end -->
+
+
+
+</body>

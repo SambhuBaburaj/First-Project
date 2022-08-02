@@ -4,6 +4,9 @@
     <![endif]-->
 
     <!-- Body main wrapper start -->
+
+
+
     <div class="wrapper login">
 
 
@@ -35,7 +38,7 @@
                                 <p style="color: red;">{{loginErr}}</p>
                                 {{/if}}
 
-                               <h3>Login</h3>
+                                <h3>Login</h3>
                                 <div class="input-box mb-20">
                                     <label class="control-label">E-Mail</label>
                                     <input type="email" placeholder="E-Mail" value="" name="email" class="info">
@@ -53,7 +56,7 @@
                                 <span>
                                     <input class="remr" type="checkbox"> Remember me
                                 </span>
-                                <a href="#" class="forgotten forg">Forgotten Password</a>
+                                <a href="/user/otp" class="forgotten forg">Forgotten Password</a>
                             </div>
                         </form>
                     </div>
@@ -61,26 +64,36 @@
                         <form action="/user/register" method="post">
                             <div class="login-reg">
                                 <h3>Register</h3>
-                                <div class="input-box mb-20">
+                                <div class="input-box">
                                     <label class="control-label">Full name</label>
                                     <input type="text" class="info" placeholder="Name" value="" name="fullName"
-                                        id="name" onclick="validatenum()">
+                                        id="name" onchange="validatenum()">
+                                    <label id="valName"></label>
+
                                 </div>
-                                <div class="input-box mb-20">
+                                <div class="input-box">
                                     <label class="control-label">E-Mail</label>
-                                    <input type="email" class="info" placeholder="E-Mail" value="" name="email">
+                                    <input type="email" class="info" placeholder="E-Mail" value="" name="email"
+                                        id="email" onchange="validateEmail()">
+                                    <label id="valemail"></label>
                                 </div>
-                                <div class="input-box mb-20">
+                                <div class="input-box">
                                     <label class="control-label">Phone number</label>
-                                    <input type="text" class="info" placeholder="Phone number" value="" name="mobile">
+                                    <input type="text" class="info" placeholder="Phone number" value="" name="mobile"
+                                        id="phone" onchange="validatePhone()">
+                                    <label id="valPhone"></label>
                                 </div>
                                 <div class="input-box">
                                     <label class="control-label">Password</label>
-                                    <input type="password" class="info" placeholder="Password" value="" name="password">
+                                    <input type="password" class="info" placeholder="Password" value="" name="password"
+                                        id="password" onchange="validatePassword()">
+                                    <label id="valPassword"></label>
                                 </div>
                                 <div class="input-box">
                                     <label class="control-label">Re-enter the password</label>
-                                    <input type="password" class="info" placeholder="Password" value="">
+                                    <input type="password" class="info" placeholder="Password" value="" id="rePassword"
+                                        onchange="validateRePassword()">
+                                    <label id="valRePassword"></label>
                                 </div>
                             </div>
                             <div class="frm-action">
@@ -97,31 +110,138 @@
         <!-- Account Area End -->
 
 
-        <!--  <script>
-            function validatenum(){
-    
-    var text2=document.getElementById("name").value;
-    var regx=/^[0-9]+$/;
-    if(regx.test(text2))
-    {
-       
-        document.getElementById("name").innerHTML="Valid";
-        document.getElementById("name").style.visibility="visible";
-        document.getElementById("name").style.color="green";
+        <script>        
+            
+                function validatenum() {
+                var text = document.getElementById("name").value;
+                console.log(text);
+                var regx = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+                if (regx.test(text)) {
+                    name = 1;
+                    document.getElementById("valName").innerHTML = "Valid";
+                    document.getElementById("valName").style.visibility = "visible";
+                    document.getElementById("valName").style.color = "green";
+                }
+                else {
+                    name = 0;
+                    document.getElementById("valName").innerHTML = "In-Valid Entry";
+                    document.getElementById("valName").style.visibility = "visible";
+                    document.getElementById("valName").style.color = "red";
+
+                }
+
+            }
+
+            function validateEmail() {
+
+                var text = document.getElementById("email").value;
+                var regx = /^([a-zA-Z0-9\.-_ ]+)@([a-zA-Z0-9]+).([a-zA-Z]{2,20})(.[a-zA-Z]{2,5})$/;
+                if (regx.test(text)) {
+                    email = 1;
+                    document.getElementById("valemail").innerHTML = "Valid";
+                    document.getElementById("valemail").style.visibility = "visible";
+                    document.getElementById("valemail").style.color = "green";
+                }
+                else {
+                    email = 0;
+                    document.getElementById("valemail").innerHTML = "In-Valid Entry";
+                    document.getElementById("valemail").style.visibility = "visible";
+                    document.getElementById("valemail").style.color = "red";
+
+                }
+
+            }
+            function validatePhone() {
+
+                var text = document.getElementById("phone").value;
+                var regx = /^[0-9]{10}$/;
+                if (regx.test(text)) {
+                    phone = 1;
+                    document.getElementById("valPhone").innerHTML = "Valid";
+                    document.getElementById("valPhone").style.visibility = "visible";
+                    document.getElementById("valPhone").style.color = "green";
+                }
+                else {
+                    phone = 0;
+                    document.getElementById("valPhone").innerHTML = "In-Valid Entry";
+                    document.getElementById("valPhone").style.visibility = "visible";
+                    document.getElementById("valPhone").style.color = "red";
+
+                }
+
+            }
+
+            function validatePassword() {
+
+                const text1 = document.getElementById("password").value;
+                console.log(text1);
+                {{!-- var regx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/; --}}
+                var regx = /^[0-9 a-z]+$/
+                if (regx.test(text1)) {
+                    password = 1;
+                    document.getElementById("valPassword").innerHTML = "Valid";
+                    document.getElementById("valPassword").style.visibility = "visible";
+                    document.getElementById("valPassword").style.color = "green";
+                }
+                else {
+                    password = 0;
+                    document.getElementById("valPassword").innerHTML = "In-Valid Entry";
+                    document.getElementById("valPassword").style.visibility = "visible";
+                    document.getElementById("valPassword").style.color = "red";
+
+                }
+
+            }
+            function validateRePassword() {
+
+                const text2 = document.getElementById("rePassword").value;
+                const text1 = document.getElementById("password").value;
+                console.log(text2);
+
+                if (text1 === text2) {
+                    rePassword = 1;
+                    document.getElementById("valRePassword").innerHTML = "Valid";
+                    document.getElementById("valRePassword").style.visibility = "visible";
+                    document.getElementById("valRePassword").style.color = "green";
+                }
+                else {
+                    rePassword = 0;
+                    document.getElementById("valRePassword").innerHTML = "In-Valid Entry";
+                    document.getElementById("valRePassword").style.visibility = "visible";
+                    document.getElementById("valRePassword").style.color = "red";
+
+                }
+
+            }
+            function validateForm(){
+        validatenum();
+        validateemail();
+        validatefm();
+        validatemsg();
+        validatenum();
+        validatesjt();
+
+        if(num==1&&mail==1&&cnty==1&&msgs==1&&sbjt==1&&nam==1)
+        {
+
+
+               num=0;
+               nam=0;
+               sbjt=0;
+               cnty=0;
+               msgs=0;
+            return true;
+            
+        }
+        else{
+            document.getElementById("btnerror").innerHTML="please check again";
+            document.getElementById("btnerror").style.visibility="visible";
+            document.getElementById("btnerror").style.color="red";
+            return false;
+        }
     }
-    else{
-        
-        document.getElementById("name").innerHTML="In-Valid Entry";
-        document.getElementById("name").style.visibility="visible";
-        document.getElementById("name").style.color="red";
 
-    }
-
-}
-
-        </script>  -->
-
-
+        </script>
 
     </div>
     <!-- Body main wrapper end -->
