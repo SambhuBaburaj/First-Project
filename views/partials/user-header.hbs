@@ -8,14 +8,19 @@
                         <div class="col-md-3 col-sm-3 col-xs-6">
                             <div class="login-register-area">
                                 <ul>
+                                    {{#if req.session.user}}
+                                    <li  style="color: white;">Welcome to SHELLBAGS</li>
+                                    <li></li>
+                                    {{else}}
                                     <li><a href="/user/login">Login</a></li>
                                     <li><a href="/user/login">Register</a></li>
+                                    {{/if}}
                                 </ul>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6 hidden-xs">
                             <div class="social-search-area text-center">
-                                <div class="social-icon socile-icon-style-2">
+                                {{!-- <div class="social-icon socile-icon-style-2">
                                     <ul>
                                         <li><a href="#" title="facebook"><i class="fa fa-facebook"></i></a> </li>
                                         <li><a href="#" title="twitter"><i class="fa fa-twitter"></i></a> </li>
@@ -23,21 +28,21 @@
                                         <li> <a href="#" title="behance"><i class="fa fa-behance"></i></a> </li>
                                         <li> <a href="#" title="rss"><i class="fa fa-rss"></i></a> </li>
                                     </ul>
-                                 </div>
+                                 </div> --}}
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-3 col-xs-6">
                             <div class="cart-currency-area login-register-area text-right">
                                 <ul>
                                     <li>
-                                        <div class="header-currency">
+                                        {{!-- <div class="header-currency">
                                             <select>
                                                 <option value="1">USD</option>
                                                 <option value="2">Pound</option>
                                                 <option value="3">Euro</option>
                                                 <option value="4">Dinar</option>
                                             </select>
-                                        </div>
+                                        </div> --}}
                                     </li>
                                     <li>
                                         <div class="header-cart">
@@ -80,12 +85,13 @@
                     </div>
                 </div>
             </div>
-            <div id="sticky-header"  class="header-middle-area">
+            <div class="header-middle-area">
                 <div class="container">
                     <div class="full-width-mega-dropdown">
                         <div class="row">
                             <div class="col-md-2 col-sm-2">
-                                <div class="logo ptb-20"><a href="index.html"> <img src="/images/logo/logo.png" alt="main logo"></a></div>
+                                <div class="logo pt-30 pb-20"> <span style="color: red; font-size: 2em;">SHELL</span>
+                    <span style="color: rgb(68, 0, 255); font-size: 2em;">BAGS</span></a></div>
                             </div>
                             <div class="col-md-7 col-sm-10 hidden-xs">
                                 <nav id="primary-menu">

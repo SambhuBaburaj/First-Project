@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card mt-5">
+            <div class="card-body">
+                <h2 class="card-title">Edit Category</h2>
+                
+                <form class="forms-sample" action="/admin/add-category" method="post">
+                    <div class="form-group">
+                        <label for="exampleInputUsername1">Category</label>
+                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Category" name="category">
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-2 col-form-label">Sub-category</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Sub-category" name="subCategory">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-2 col-form-label">Sub-category</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Sub-category" name="subCategory">
+                        </div>
+                    </div>
+                    {{!-- <button class="float-right btn btn-success" onclick=" return addSubCatagories()">+</button> --}}
+                    <div class="form-group row">
+                        <label for="exampleInputEmail2" class="col-sm-2 col-form-label">Sub-category</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="h" placeholder="Sub-category" name="subCategory" >
+                        </div>
+                    </div>
+                    
+                    
+                    <button type="submit" class="btn btn-primary mr-2 float-right">Submit</button>
+                    {{!-- <button class="btn btn-light">Cancel</button> --}}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{{!-- <script>
+function addSubCatagories() {
+    event.preventDefault();
+  
+      let select = document.querySelector("#subCatagory")
+     
+
+     
+      var new_input="<input type='text' id='subCatagory' name='subCatagory' class='custom-form'>";
+      $('#addSubCatagory').append(new_input)
+
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+</script>  --}}
+

@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title" style="margin-top: 2.5em;">USERS</h4>
+        </p>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>E-mail</th>
+              <th>Phone number</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          {{#each users}}
+          <tbody>
+            <tr>
+              <td>{{this.fullName}}</td>
+              <td>{{this.email}}</td>
+              <td>{{this.mobile}}</td>
+              {{#if this.block}}
+              <td>Blocked</td>
+              <td><a href="/admin/unblock/{{this._id}}"><label class="badge badge-danger">Unblock</label></a></td>
+              {{else}}  
+              <td>Active</td>
+              <td><a href="/admin/block/{{this._id}}"><label class="badge badge-success">Block</label></a></td>
+              {{/if}}
+              {{!-- {{#if this.block}}
+              <td>Blocked</td>
+              {{else}}
+              <td>Active</td>
+              {{/if}}
+              <td><label class="badge badge-danger">Pending</label></td> --}}
+            </tr>
+            {{!-- <tr>
+              <td>Messsy</td>
+              <td>Flash</td>
+              <td class="text-danger"> 21.06% <i class="mdi mdi-arrow-down"></i></td>
+              <td><label class="badge badge-warning">In progress</label></td>
+            </tr>
+            <tr>
+              <td>John</td>
+              <td>Premier</td>
+              <td class="text-danger"> 35.00% <i class="mdi mdi-arrow-down"></i></td>
+              <td><label class="badge badge-info">Fixed</label></td>
+            </tr>
+            <tr>
+              <td>Peter</td>
+              <td>After effects</td>
+              <td class="text-success"> 82.00% <i class="mdi mdi-arrow-up"></i></td>
+              <td><label class="badge badge-success">Completed</label></td>
+            </tr>
+            <tr>
+              <td>Dave</td>
+              <td>53275535</td>
+              <td class="text-success"> 98.05% <i class="mdi mdi-arrow-up"></i></td>
+              <td><label class="badge badge-warning">In progress</label></td>
+            </tr> --}}
+          </tbody>
+          {{/each}}
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

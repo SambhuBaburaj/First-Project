@@ -37,6 +37,9 @@
                                 {{#if loginErr}}
                                 <p style="color: red;">{{loginErr}}</p>
                                 {{/if}}
+                                {{#if loginBlocked}}
+                                <p style="color: red;">{{loginBlocked}}</p>
+                                {{/if}}
 
                                 <h3>Login</h3>
                                 <div class="input-box mb-20">
@@ -56,7 +59,7 @@
                                 <span>
                                     <input class="remr" type="checkbox"> Remember me
                                 </span>
-                                <a href="/user/otp" class="forgotten forg">Forgotten Password</a>
+                                <a href="/user/otplogin" class="forgotten forg">Forgotten Password</a>
                             </div>
                         </form>
                     </div>
@@ -67,7 +70,7 @@
                                 <div class="input-box">
                                     <label class="control-label">Full name</label>
                                     <input type="text" class="info" placeholder="Name" value="" name="fullName"
-                                        id="name" onchange="validatenum()">
+                                        id="name" onchange="validatenam()">
                                     <label id="valName"></label>
 
                                 </div>
@@ -89,6 +92,27 @@
                                         id="password" onchange="validatePassword()">
                                     <label id="valPassword"></label>
                                 </div>
+
+
+                                <select name="" onchange="validatename()">
+                                    <option value="" selected disabled>Please select</option>
+                                    <option value="its a">A</option>
+                                    <option value="its b">B</option>
+                                    <option value="its c">C</option>
+                                </select>
+
+                                {{!-- <div class="form-group col-lg-6">
+                                    <label for="exampleInputEmail3">Category</label><br>
+                                    <select name="category" onblur="categorySelected({{this.category}})">
+                                        <option value="" selected disabled>Please select</option>
+                                        {{#each categories}}
+                                        <option value="{{this.category}}">{{this.category}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div> --}}
+
+
+
                                 <div class="input-box">
                                     <label class="control-label">Re-enter the password</label>
                                     <input type="password" class="info" placeholder="Password" value="" id="rePassword"
@@ -112,7 +136,7 @@
 
         <script>        
             
-                function validatenum() {
+                function validatename() {
                 var text = document.getElementById("name").value;
                 console.log(text);
                 var regx = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
@@ -127,13 +151,9 @@
                     document.getElementById("valName").innerHTML = "In-Valid Entry";
                     document.getElementById("valName").style.visibility = "visible";
                     document.getElementById("valName").style.color = "red";
-
                 }
-
             }
-
             function validateEmail() {
-
                 var text = document.getElementById("email").value;
                 var regx = /^([a-zA-Z0-9\.-_ ]+)@([a-zA-Z0-9]+).([a-zA-Z]{2,20})(.[a-zA-Z]{2,5})$/;
                 if (regx.test(text)) {
@@ -147,12 +167,9 @@
                     document.getElementById("valemail").innerHTML = "In-Valid Entry";
                     document.getElementById("valemail").style.visibility = "visible";
                     document.getElementById("valemail").style.color = "red";
-
                 }
-
             }
             function validatePhone() {
-
                 var text = document.getElementById("phone").value;
                 var regx = /^[0-9]{10}$/;
                 if (regx.test(text)) {
@@ -166,13 +183,9 @@
                     document.getElementById("valPhone").innerHTML = "In-Valid Entry";
                     document.getElementById("valPhone").style.visibility = "visible";
                     document.getElementById("valPhone").style.color = "red";
-
                 }
-
             }
-
             function validatePassword() {
-
                 const text1 = document.getElementById("password").value;
                 console.log(text1);
                 {{!-- var regx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/; --}}
@@ -188,16 +201,12 @@
                     document.getElementById("valPassword").innerHTML = "In-Valid Entry";
                     document.getElementById("valPassword").style.visibility = "visible";
                     document.getElementById("valPassword").style.color = "red";
-
                 }
-
             }
             function validateRePassword() {
-
                 const text2 = document.getElementById("rePassword").value;
                 const text1 = document.getElementById("password").value;
                 console.log(text2);
-
                 if (text1 === text2) {
                     rePassword = 1;
                     document.getElementById("valRePassword").innerHTML = "Valid";
@@ -209,9 +218,7 @@
                     document.getElementById("valRePassword").innerHTML = "In-Valid Entry";
                     document.getElementById("valRePassword").style.visibility = "visible";
                     document.getElementById("valRePassword").style.color = "red";
-
                 }
-
             }
             function validateForm(){
         validatenum();
@@ -220,11 +227,8 @@
         validatemsg();
         validatenum();
         validatesjt();
-
         if(num==1&&mail==1&&cnty==1&&msgs==1&&sbjt==1&&nam==1)
         {
-
-
                num=0;
                nam=0;
                sbjt=0;
@@ -240,12 +244,9 @@
             return false;
         }
     }
-
         </script>
 
     </div>
     <!-- Body main wrapper end -->
-
-
 
 </body>

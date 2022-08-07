@@ -6,6 +6,7 @@ var logger = require('morgan');
 var hbs = require('express-handlebars');
 var db = require('./config/connection');
 var session = require('express-session');
+var bodyParser = require('body-parser');
 
 var userRouter = require('./routes/user');
 var adminRouter = require('./routes/admin');
@@ -21,8 +22,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({secret:'Key',cookie:{maxAge:600000}}));
+app.use(session({secret:'Key',
+saveUninitialized:true,
+rolling:true,
+cookie:{maxAge:6000000}}));
 
 db.connect((err) => {
   if(err) console.log('Database connection error'+err);

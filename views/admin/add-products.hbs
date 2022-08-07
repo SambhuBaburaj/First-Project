@@ -1,0 +1,131 @@
+<div class="container">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body" style="margin-top: 5em;">
+                {{!-- <h1 id="h1tag" style="color: red;">test</h1> --}}
+                <h1 class="card-title">Add Products</h1>
+                <form class="forms-sample" action="/admin/add-products" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="exampleInputName1">Product Name</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Name"
+                            name="productName">
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label for="exampleInputEmail3">Category</label><br>
+                        {{!-- <label for="exampleInputEmail3">Category</label>
+                        <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Category"
+                            name="category"> --}}
+                        <select name="categoryName" id="categoryId">
+                            <option value="" selected disabled>Please select</option>
+                            {{#each categories}}
+                            <option id="categoryValue" value="{{this.category}}">{{this.category}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+
+                    <script>
+                        $(document).ready(function () {
+
+                            $("#categoryId").on('change', (event) => {
+                                let category = $('#categoryId').val();
+                                console.log(category)
+                                $.ajax({
+                                    url: '/admin/categorySelected',
+                                    method: 'post',
+                                    contentType: 'application/json; charset=utf-8',
+                                    data: JSON.stringify({ "category": category }),
+                                    success: function (response) {
+                                        if (response) {
+                                                    for (var i = 0; i < response.length;i++){
+                                                    $('#subCategoryValue').append('<option value=' + response[i].subCategory + '>' + response[i].subCategory + '</option>');
+                                                
+                                            }
+                                            console.log(response[0].subCategory)
+
+                                          
+                                        } else {
+                                            subCategoryAjax = 'No sub-category';
+                                        }
+
+                                    }
+                                })
+                            })
+                        })
+                    </script>
+
+
+
+
+                    <div class="form-group col-lg-6">
+                        <label for="exampleInputEmail3">Sub-category</label><br>
+                        {{!-- <label for="exampleInputEmail3">Category</label>
+                        <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Category"
+                            name="category"> --}}
+                        <select name="subcategoryName" id="subcategoryId">
+                            <option value="" selected disabled>Please select</option>
+                            {{!-- {{#each subCategoryAjax}}
+                            <option id="categoryValue" value="{{this.subCategory}}">{{this.subCategory}}</option>
+                            {{/each}} --}}
+                            <option id="subCategoryValue" value=""></option>
+                        </select>
+                    </div>
+
+
+
+
+
+
+
+                    {{!--
+                    <div class="form-group col-lg-6">
+                        <label for="exampleInputEmail3">Sub-category</label><br>
+                        <select name="subCategory">
+                            <option value="" selected disabled>Please select</option>
+                            {{#each subCategoryAjax}}
+                            <option value="{{this.subCategory}}">{{this.subCategory}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    --}}
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword4">Brand</label>
+                        <input type="text" class="form-control" id="exampleInputPassword4" placeholder="Brand"
+                            name="brand">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword4">Price</label>
+                        <input type="number" class="form-control" id="exampleInputPassword4" placeholder="Price"
+                            name="price">
+                    </div>
+                    <div class="form-group">
+                        <label for="formFile">File upload</label>
+                        <input class="form-control" type="file" multiple='multiple' {{!--accept='image/*' --}}
+                            id="formFile" name="images">
+                        {{!-- <input type="file" name="img[]" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                            <input type="text" class="form-control file-upload-info" disabled
+                                placeholder="Upload Image">
+                            <span class="input-group-append">
+                                <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                            </span>
+                        </div> --}}
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="4" name="description"></textarea>
+                    </div>
+                    {{!-- <div class="form-group">
+                        <label for="exampleInputEmail3">link</label>
+                        <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Sub-category"
+                            name="link">
+                    </div> --}}
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

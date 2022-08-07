@@ -1,0 +1,101 @@
+
+<div class="container">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body" style="margin-top: 5em;">
+                <h1 class="card-title">Edit Products</h1>
+                <form class="forms-sample" action="/admin/edit-product/{{product._id}}" method="post"
+                    enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="exampleInputName1">Product Name</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Name"
+                            name="productName" value="{{product.productName}}">
+                    </div>
+
+
+
+
+
+                    <div class="form-group col-lg-6">
+                        <label for="exampleInputEmail3">Category</label><br>
+                        <select name="category"   id="selectedCategory" >
+                            <option value="" selected disabled>Please select</option>
+                            {{#each categories}}
+                            <option id="categoryValue" value="{{this.category}}">{{this.category}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="exampleInputEmail3">Sub-category</label><br>
+                        <select name="subCategory">
+                            <option value="" selected disabled>Please select</option>
+                            {{#each subCategory}}
+                            <option value="{{this.subCategory}}">{{this.subCategory}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="exampleInputPassword4">Brand</label>
+                        <input type="text" class="form-control" id="exampleInputPassword4" placeholder="Brand"
+                            name="brand" value="{{product.brand}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword4">Price</label>
+                        <input type="number" class="form-control" id="exampleInputPassword4" placeholder="Price"
+                            name="price" value="{{product.price}}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="formFile">File upload</label>
+                        <input class="form-control" type="file" multiple='multiple' {{!--accept='image/*' --}}
+                            id="formFile" name="images">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleTextarea1">Description</label>
+                        {{!-- <textarea class="form-control" id="exampleTextarea1" rows="4"
+                            name="description"></textarea> --}}
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Name"
+                            name="description" value="{{product.description}}">
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+$(document).on('change','#selectedCategory',function(e)
+     {
+      e.preventDefault();
+      var category=$('#selectedCategory').val()
+      
+      {{!-- console.log(category) --}}
+      
+      $.ajax({
+        type:'POST',
+        url:'/admin/categorySelected',
+        dataType:'json',
+        data:{
+          'category':category,
+          
+          
+        },
+        success:function(responce){
+          console.log(responce)
+          document.getElementById("warning").style.display="none";
+          if(responce.success==true){
+          window.location.replace('login')
+        }
+        else{
+          document.getElementById("warning").style.display="block";
+        }
+      }
+      })
+      
+    })
+</script>
+

@@ -1,0 +1,46 @@
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<h1 id="h1tag">test ajax</h1>
+<div class="container">
+    <form id="testForm" action="">
+    <input type="text" placeholder="text" name="testInput" id="testInputId">
+    <button type="submit">click</button>
+</form>
+
+</div>
+
+<script>
+    $(document).ready(function(){
+        
+        $("#testInputId").on('change',(event)=>{
+            event.preventDefault();
+            let myName = $('#testInuptId').val();
+            $.ajax({  
+                url:'/user/test',
+                method: 'post',
+                contentType: 'text/json',
+                data: myName,
+                success: function(response){
+                    console.log(response)
+                     document.getElementById("h1tag").innerHTML=response[0].subCategory;
+                     alert('kljfklsdlkhjsdf;k')
+                }
+            })
+        })
+    })
+</script>
+{{!-- 
+<script>
+    $("#testForm").submit((event) => {
+  event.preventDefault();
+
+  $.ajax({
+    url: "/placeOrder",
+    method: "post",
+    data: $("#placeOrder").serialize(),
+    success: (response) => {
+     alert('hai')
+    },
+  });
+});
+</script> --}}
